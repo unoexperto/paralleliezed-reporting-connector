@@ -175,6 +175,7 @@ fun requestAndPollReports(dates: List<LocalDate>, sink: FluxSink<Command>, polli
                             Mono.empty()
                         } else {
                             log("   --> Report $reportId is NOT ready")
+                            // If it's not ready we set next check time in future
                             Mono.just(reportId to Instant.now().plusSeconds(pollingIntervalSec))
                         }
                     }.subscribeOn(scheduler)
