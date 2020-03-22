@@ -163,7 +163,7 @@ fun requestAndPollReports(dates: List<LocalDate>, sink: FluxSink<Command>, polli
             .expandDeep { (reportId, checkTime) ->
 
                 // Somehow we need to keep checking X number of reports until they are ready which means
-                // this stream is a stream unknown but finite number of elements.
+                // this stream is a stream of unknown but finite number of elements.
 
                 // expand()/expandDeep() allows us to "requeue" report ID which is not yet ready.
 
